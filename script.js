@@ -8,7 +8,7 @@ new Promise(async (resolve, reject) => {
   try {
     response = await axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?symbol=BTC', {
       headers: {
-        'X-CMC_PRO_API_KEY': '17921b1a-07b1-4264-8260-3547e4d9af36',
+        'X-CMC_PRO_API_KEY': '',
       },
     });
   } catch(ex) {

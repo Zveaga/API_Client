@@ -6,7 +6,7 @@ console.log('START');
 
 // fs.readFile()
 const apiURL = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC';
-const apiKey = '17921b1a-07b1-4264-8260-3547e4d9af36';
+const apiKey = '';
 
 const requestOptions = {
 	method: 'GET',

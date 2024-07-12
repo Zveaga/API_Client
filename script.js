@@ -1,12 +1,9 @@
-/* Example in Node.js */
-// import axios from 'axios';
-
 const axios = require('axios');
 
 let response = null;
 new Promise(async (resolve, reject) => {
   try {
-    response = await axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?symbol=BTC', {
+    response = await axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC', {
       headers: {
         'X-CMC_PRO_API_KEY': '',
       },
@@ -20,7 +17,7 @@ new Promise(async (resolve, reject) => {
   if (response) {
     // success
     const json = response.data;
-    console.log(json);
+    console.log(JSON.stringify(json, null, 2)); // Print the entire JSON object with indentation
     resolve(json);
   }
 });

@@ -2,28 +2,33 @@
 //---HTML elements---//
 const btnDisplay = document.getElementById('btn-display-data');
 const inputCoinName = document.getElementById('input-box');
+const displayContainer = document.getElementById('dataDisplay')
+
 
 //---SEND REQUEST---//
-async function fetchData() {
+async function fetchData(coinName) {
     try {
-        const response = await fetch('http://localhost:3000/api/cryptocurrency/quotes/latest');
+        const response = await fetch(`http://localhost:3000/api/crypto?slug=${coinName}`);
+        // const response = await fetch(`http://localhost:3000/api/crypto`);
         const dataJson = await response.json();
+		console.log(dataJson);
         // displayData(data);
-		const price = dataJson.data[1].quote.USD.price.toFixed(2); 
+		price = dataJson.data[1].quote.USD.price.toFixed(2); 
 		console.log(price);
-    } catch (error) {
-        console.error('Error fetching data:', error);
+		displayContainer.textContent = `Price: ${price} $`;
+	} catch (error) {
+        console.error('EROR FETCHING DATA:', error);
     }
 }
-fetchData();
 
-// function displayData(data)}
+fetchData('bitcoin');
 
-
+//$
 //---DISPLAY DATA---//
 btnDisplay.addEventListener('click', function () {
 	const coinName = inputCoinName.value;
-	console.log(coinName);
+	//console.log(coinName);
+	fetchData(coinName);
 })	
 
 

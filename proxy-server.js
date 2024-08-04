@@ -7,9 +7,12 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+let coinName;
 // Endpoint to proxy API requests
-app.get('/api/cryptocurrency/quotes/latest', async (req, res) => {
-    const url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?slug=bitcoin';
+app.get('/api/crypto', async (req, res) => {
+	coinName = req.query.slug;
+    const url = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?slug=${coinName}`;
+    // const url = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/map`;
     try {
         const response = await axios.get(url, {
             headers: {
